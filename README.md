@@ -2,7 +2,7 @@
 
 ## Description
 A work-in-progress prototype of a web app I developed for processing time-series metrics.
-The goals are to create a Python API that utilizes the high-performance TimescaleDB extension for PostgreSQL, and learn the fundamentals of RESTful API development, Docker containerization, and Microsoft Entra ID access management.
+The goals are to create a Python API that utilizes the high-performance TimescaleDB extension for PostgreSQL, and learn the fundamentals of RESTful API development, Docker containerization, and Microsoft Entra ID identity and access management.
 
 ## Commands
 
