@@ -1,0 +1,30 @@
+# copy dataset into container:
+cd scripts
+docker cp metrics_uuid.csv cymap-postgres-1:/
+docker cp metrics.csv cymap-timescale-1:/
+
+# create table with uuids
+CREATE TABLE "metrics" (
+    id          text                        not null,
+    timestamp   timestamp with time zone    not null,
+    type_id     integer                     not null,
+    value       double precision            not null,
+    primary key (id)
+);
+
+# create table without uuids in timescale
+CREATE TABLE "metrics" (
+    timestamp   timestamp with time zone    not null,
+    type_id     integer                     not null,
+    value       double precision            not null
+);
+
+# create hypertable
+SELECT create_hypertable('metrics', by_range('timestamp', INTERVAL '1 hour'));
+
+# check that the hypertable was created
+SELECT * FROM _timescaledb_catalog.hypertable;
+
+# upload dataset to database
+\COPY metrics FROM metrics_uuid.csv CSV;
+\COPY metrics FROM metrics.csv CSV;

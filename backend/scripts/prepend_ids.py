@@ -1,6 +1,3 @@
-# copy into container:
-# docker cp metrics_uuid.csv cymap-timescale-1:/
-
 import csv
 from uuid import uuid4
 import time
