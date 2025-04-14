@@ -61,7 +61,7 @@ class DatabaseSessionManager:
         await conn.run_sync(Base.metadata.drop_all)
 
 
-sessionmanager = DatabaseSessionManager(settings.TIMESCALE_URL, {"echo": settings.echo_sql})
+sessionmanager = DatabaseSessionManager(settings.POSTGRES_URL, {"echo": settings.echo_sql})
 
 async def get_db_session():
     async with sessionmanager.session() as session:

@@ -46,7 +46,7 @@ services:
     environment:
       PYTHONPATH: .
       TIMESCALE_URL: postgresql+asyncpg://${TIMESCALE_USER}:${TIMESCALE_PASSWORD}@timescale:5432/${TIMESCALE_DB}
-      POSTGRES_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5433/${POSTGRES_DB}
+      POSTGRES_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     depends_on:
       - "timescale"
       - "postgres"

@@ -11,11 +11,11 @@ from database.session import Base
 
 class Metric(Base):
     __tablename__ = 'metrics'
-    __table_args__ = ({
-        'timescaledb_hypertable': {
-            'time_column_name': 'timestamp'
-        }
-    })
+    # __table_args__ = ({
+    #     'timescaledb_hypertable': {
+    #         'time_column_name': 'timestamp'
+    #     }
+    # })
 
     id: Mapped[str] = mapped_column(Text, nullable=False, primary_key=True)
     timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.now, nullable=False)
